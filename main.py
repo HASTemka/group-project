@@ -4,10 +4,8 @@ import random as rdm
 import pygame as pg
 import pygame_menu as pgm
 
-# pip install pygame-menu
 pg.init()
-pg.display.set_caption("DodleJump")
-# подготовка игровых ресурсов
+pg.display.set_caption("Platformer")
 W = 1024
 H = 1024
 screen = pg.display.set_mode((W, H))
@@ -37,13 +35,10 @@ class Player(Sprite):
     def __init__(self):
         super().__init__(W // 2, FLOOR_Y, "IMG/Player_grey.jpg")
 
-        # делаем нормальный размер игрока
         self.image = pg.transform.scale(self.image, (PLAYER_SIZE, PLAYER_SIZE))
 
         self.image_left = self.image
         self.image_right = pg.transform.flip(self.image, True, False)
-
-        # ставим игрока на пол
         self.rect = self.image.get_rect(midbottom=(W // 2, FLOOR_Y))
 
         self.speed = 0
@@ -96,8 +91,9 @@ def game():
                 running = False
 
             if event.type == pg.KEYDOWN:
-                if event.key == pg.K_SPACE:
+                if event.key == pg.K_SPACE and player.on_ground:
                     player.speed = JUMP
+                    player.on_ground = False
 
         all_sprites.update()
 
