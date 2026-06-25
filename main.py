@@ -1,5 +1,6 @@
 import random
 import random as rdm
+from trap import Trap
 
 import pygame as pg
 import pygame_menu as pgm
@@ -86,6 +87,7 @@ class Platform(pg.sprite.Sprite):
         self.image.fill(self.color)
         self.rect = self.image.get_rect(topleft=(x, y))
         self.is_hazard = is_hazard
+
 
 def game():
     clock = pg.time.Clock()
