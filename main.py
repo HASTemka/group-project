@@ -3,7 +3,7 @@ import random as rdm
 from trap import Trap
 
 import pygame as pg
-import pygame_menu as pgm
+import pygame_menu as pgm 
 
 pg.init()
 pg.display.set_caption("Platformer")
